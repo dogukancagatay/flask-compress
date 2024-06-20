@@ -1,7 +1,48 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]<8"]
+requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
 
+
+[project]
+name = "Flask-Compress"
+authors = [{name = "Thomas Mansencal", email = "thomas.mansencal@gmail.com"}]
+dynamic = ["version"]
+description = "Compress responses in your Flask app with gzip, deflate, brotli or zstandard."
+license = { text = "MIT" }
+readme = "README.md"
+classifiers = [
+    'Environment :: Web Environment',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: Implementation :: CPython',
+    'Programming Language :: Python :: Implementation :: PyPy',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    'Topic :: Software Development :: Libraries :: Python Modules']
+requires-python = ">= 3.7"
+dependencies = [
+    "flask",
+    "brotli; platform_python_implementation != 'PyPy'",
+    "brotlicffi; platform_python_implementation == 'PyPy'",
+    "zstandard; platform_python_implementation != 'PyPy'",
+    "zstandard[cffi]; platform_python_implementation == 'PyPy'"
+]
+
+[project.urls]
+Homepage = "https://github.com/colour-science/flask-compress"
+Documentation = "https://github.com/colour-science/flask-compress/blob/master/README.md"
+Repository = "https://github.com/colour-science/flask-compress"
+Issues = "https://github.com/colour-science/flask-compress/issues"
+Changelog = "https://github.com/colour-science/flask-compress/blob/master/CHANGELOG.md"
+
+
 [tool.setuptools_scm]
-write_to = "flask_compress/_version.py"
-write_to_template = "__version__ = \"{version}\"\n"
+version_file = "flask_compress/_version.py"
+# write_to_template = "__version__ = \"{version}\"\n"
